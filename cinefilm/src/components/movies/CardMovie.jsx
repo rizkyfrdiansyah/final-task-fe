@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardMovie = () => {
+const CardMovie = ({ title, image, genres, id }) => {
+  const displayGenres = genres.slice(0, 3);
+
   return (
     <div className="container">
       <div className="bg-white shadow-md rounded-lg overflow-hidden h-full">
-        <img src="" alt="title" className="w-full h-48 object-cover" />
+        <img src={`https://image.tmdb.org/t/p/original${image}`} alt={title} className="w-full h-48 object-cover" />
         <div className="p-4 h-40 flex flex-col justify-between">
           <div>
-            <h2 className="text-lg font-semibold">title</h2>
-            <p className="text-gray-500">genre</p>
+            <h2 className="text-lg font-semibold">{title}</h2>
+            <p className="text-gray-500">{displayGenres.join(", ")}</p>
           </div>
-          <Link to={[]}>
+          <Link to={`/movie/${id}`}>
             <button className="bg-secondary hover:bg-primary transition duration-300 ease-in-out text-white py-2 px-4 rounded">Detail</button>
           </Link>
         </div>

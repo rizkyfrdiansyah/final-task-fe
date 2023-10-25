@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "./Container";
+import Container from "../Container";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import RatingStar from "../RatingStar";

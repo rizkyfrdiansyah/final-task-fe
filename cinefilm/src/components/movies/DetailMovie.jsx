@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import RatingStar from "../RatingStar";
 
 function formatBudget(budget) {
   if (budget >= 1000000) {
@@ -33,12 +34,14 @@ const DetailMovie = () => {
   return (
     <div className="mt-16 mb-10">
       {/* Banner */}
-      <div className="bg-black text-white py-16 px-4">
+      <div className="bg-black text-white py-16 px-4" style={[]}>
         <div className="container mx-auto flex items-center">
           <div className="ml-8">
             <h1 className="text-4xl font-black">movietitle</h1>
             <div className="flex items-center mt-4">
-              <div className="mr-4">voteaverage</div>
+              <div className="mr-4">
+                <RatingStar />
+              </div>
               <div>
                 <span className="text-xl">count</span>
               </div>

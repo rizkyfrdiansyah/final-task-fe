@@ -24,7 +24,7 @@ const ListMovie = () => {
         <CardMovie key={[]} id={[]} title={[]} image={[]} genres={[]} />
       </div>
 
-      <Pagination />
+      <Pagination currentPage={[]} totalPages={[]} onPageChange={[]} />
     </Container>
   );
 };

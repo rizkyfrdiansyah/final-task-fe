@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import DetailMovie from "../components/DetailMovie";
+import DetailMovie from "../components/movies/DetailMovie";
 
 export const SetUpRouters = () => {
   const [searchQuery, setSearchQuery] = useState("");

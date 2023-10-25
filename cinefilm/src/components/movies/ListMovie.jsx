@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "./Container";
-import CardMovie from "./CardMovie";
-import Pagination from "./Pagination";
+import Container from "../Container";
+import CardMovie from "../movies/CardMovie";
+import Pagination from "../Pagination";
 
 const ListMovie = () => {
   return (

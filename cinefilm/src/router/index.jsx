@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import DetailMovie from "../components/movies/DetailMovie";
@@ -10,15 +10,17 @@ export const SetUpRouters = () => {
 
   return (
     <BrowserRouter>
-      <Router>
+      <Routes>
         <div>
           <Navbar onSearchQueryChange={setSearchQuery} />
-          <Routes>
+          <Router>
             <Route path="/" element={<Home searchQuery={searchQuery} />} />
             <Route path="/movie/:id" element={<DetailMovie />} />
-          </Routes>
+            <Route path="not-found" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/not-found" />} />
+          </Router>
         </div>
-      </Router>
+      </Routes>
     </BrowserRouter>
   );
 };

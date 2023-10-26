@@ -1,10 +1,10 @@
-import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import { SetUpRouters } from "./router/index";
 
 function App() {
   return (
     <>
+      <title>Cinefilm</title>
       <SetUpRouters />
     </>
   );

@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import DetailMovie from "../components/movies/DetailMovie";

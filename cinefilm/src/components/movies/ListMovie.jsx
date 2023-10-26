@@ -37,7 +37,7 @@ const ListMovie = ({ searchQuery }) => {
   }, [searchQuery, movies, selectedGenre]);
 
   async function fetchGenres() {
-    const apiKey = "0d60d57b167db9273c83d0f0ed3221fe";
+    const apiKey = "affdd15286d19dac04688aa26ecee7ac";
     const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
 
     try {
@@ -49,7 +49,7 @@ const ListMovie = ({ searchQuery }) => {
   }
 
   async function fetchAllMovieData() {
-    const apiKey = "0d60d57b167db9273c83d0f0ed3221fe";
+    const apiKey = "affdd15286d19dac04688aa26ecee7ac";
     const movieDataPromises = [];
 
     for (let i = 1; i <= totalPagesToFetch; i++) {

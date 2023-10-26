@@ -26,7 +26,7 @@ const DetailMovie = () => {
   useEffect(() => {
     async function fetchMovieDetail() {
       try {
-        const apiKey = "0d60d57b167db9273c83d0f0ed3221fe";
+        const apiKey = "affdd15286d19dac04688aa26ecee7ac";
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`);
 
         setMovie(response.data);
@@ -37,7 +37,7 @@ const DetailMovie = () => {
 
     async function fetchCharacters() {
       try {
-        const apiKey = "0d60d57b167db9273c83d0f0ed3221fe";
+        const apiKey = "affdd15286d19dac04688aa26ecee7ac";
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`);
 
         setCharacters(response.data.cast);
@@ -48,7 +48,7 @@ const DetailMovie = () => {
 
     async function fetchReviews() {
       try {
-        const apiKey = "0d60d57b167db9273c83d0f0ed3221fe";
+        const apiKey = "affdd15286d19dac04688aa26ecee7ac";
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}&language=en-US`);
 
         setReviews(response.data.results);
@@ -59,7 +59,7 @@ const DetailMovie = () => {
 
     async function fetchTrailer() {
       try {
-        const apiKey = "0d60d57b167db9273c83d0f0ed3221fe";
+        const apiKey = "affdd15286d19dac04688aa26ecee7ac";
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`);
 
         const trailer = response.data.results.find((video) => video.type === "Trailer");

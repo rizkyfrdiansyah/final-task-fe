@@ -13,22 +13,13 @@ const Footer = () => {
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4">
           <div className="lg:-mt-16 lg:mb-0">
             <img src={Logo} alt="Logo" className="hidden lg:flex w-14 h-10 mb-4" />
-            <div className="hidden lg:flex ">
-              <p className="text-left text-gray-200">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                <br />
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                <br />
-                Delectus labore ipsum libero sunt ex voluptas molestias laudantium
-                <br />
-                architecto laborum rem eius totam eveniet aut ratione, cumque nam,
-                <br />
-                ab, amet praesentium.
-              </p>
-            </div>
+            <p className="hidden lg:flex text-left text-gray-200">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Delectus labore ipsum libero sunt ex voluptas molestias laudantium architecto laborum rem eius totam
+              eveniet aut ratione, cumque nam, ab, amet praesentium.
+            </p>
           </div>
 
-          {/* Tampilan Desktop */}
+          {/* Layout Desktop */}
           <div className="hidden lg:-mt-24 lg:flex flex-col lg:ml-6">
             <a href="#" className="mb-2 text-white hover:text-gray-300">
               Tentang Kami
@@ -51,10 +42,10 @@ const Footer = () => {
             <div className="mb-6">
               <h1 className="text-lg font-bold text-white mb-3 lg:ml-5">Download</h1>
               <a href="#">
-                <img src={GooglePlay} alt="Google Play" className="w-36" />
+                <img src={GooglePlay} alt="googleplay" className="w-36" />
               </a>
               <a href="#">
-                <img src={AppStore} alt="App Store" className="w-36" />
+                <img src={AppStore} alt="appstore" className="w-36" />
               </a>
             </div>
             <div className="flex">
@@ -73,7 +64,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Tampilan Mobile */}
+          {/* Layout Mobile */}
           <img src={Logo} alt="Logo" className="lg:hidden w-14 h-10 mb-4" />
           <p className="lg:hidden text-center text-gray-200 mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Delectus labore ipsum libero sunt ex voluptas molestias laudantium architecto laborum rem eius totam
@@ -100,10 +91,10 @@ const Footer = () => {
           <div className="lg:hidden items-center mt-6">
             <h1 className="text-lg font-bold text-white mb-2 ml-6">Download</h1>
             <a href="#">
-              <img src={GooglePlay} alt="Google Play" className="w-36" />
+              <img src={GooglePlay} alt="googleplay" className="w-36" />
             </a>
             <a href="#">
-              <img src={AppStore} alt="App Store" className="w-36" />
+              <img src={AppStore} alt="appstore" className="w-36" />
             </a>
           </div>
 
@@ -121,7 +112,7 @@ const Footer = () => {
           </div>
         </div>
         <hr className="border-t border-blueGray-400 my-4" />
-        <div className="container mx-auto text-center text-white text-sm">&copy; {new Date().getFullYear()} Azharangga Kusuma. All rights reserved.</div>
+        <div className="container mx-auto text-center text-white text-sm">&copy; {new Date().getFullYear()} Muhammad Rizky Ferdiansyah. All rights reserved.</div>
       </Container>
     </footer>
   );

@@ -17,8 +17,9 @@ const Slider = () => {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`);
 
         const shuffledImages = response.data.results.sort(() => Math.random() - 0.5);
+        const imagesToDisplay = shuffledImages.slice(0, maxImagesToShow);
 
-        setSliderImages(shuffledImages.slice(0, maxImagesToShow));
+        setSliderImages(imagesToDisplay);
       } catch (error) {
         console.error("Error fetching slider images: ", error);
       }
@@ -36,7 +37,7 @@ const Slider = () => {
       <br />
       <br />
       <br />
-      <div className="">
+      <div>
         <Carousel showArrows={false} showStatus={false} showThumbs={false} infiniteLoop={true} autoPlay={true} interval={3000}>
           {sliderImages.map((movie, index) => (
             <div key={index}>

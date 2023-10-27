@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "../Container";
 import CardMovie from "../movies/CardMovie";
 import Pagination from "../Pagination";
+import axios from "axios";
 
 const ListMovie = ({ searchQuery }) => {
   const [movies, setMovies] = useState([]);
@@ -16,7 +17,7 @@ const ListMovie = ({ searchQuery }) => {
   useEffect(() => {
     fetchGenres()
       .then((data) => setGenres(data))
-      .catch((error) => console.log("Error fetching genres: ", error));
+      .catch((error) => console.error("Error fetching genres: ", error));
   }, []);
 
   useEffect(() => {
@@ -72,12 +73,14 @@ const ListMovie = ({ searchQuery }) => {
   }
 
   const filterMovies = () => {
-    const filtered = movies.filter((movie) => movie.title.toLowerCase().include(searchQuery.toLowerCase()));
+    const filtered = movies.filter((movie) => movie.title.toLowerCase().includes(searchQuery.toLowerCase()));
     setFilteredMovies(filtered);
   };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   const indexOfLastMovie = currentPage * moviesPerPage;
@@ -106,7 +109,7 @@ const ListMovie = ({ searchQuery }) => {
           ))}
         </div>
       </div>
-      <input type="text" placeholder="Search..." className="py-2 px-3 rounded mb-4 hidden" value={searchQuery} onChange={(e) => filterMovies(e.target.value)} />
+      <input type="text" placeholder="Search..." className="py-2 px-3 rounded mb-4" value={searchQuery} onChange={(e) => filterMovies(e.target.value)} />
       {currentMovies.length === 0 ? (
         <div className="text-lg text-gray-600">No movies found with the current search criteria.</div>
       ) : (

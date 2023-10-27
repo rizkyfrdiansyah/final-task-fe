@@ -24,61 +24,32 @@ const DetailMovie = () => {
   const [isAddedToWatchlist, setIsAddedToWatchlist] = useState(false);
 
   useEffect(() => {
-    async function fetchMovieDetail() {
+    async function fetchData() {
       try {
         const apiKey = "affdd15286d19dac04688aa26ecee7ac";
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`);
+        const movieResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`);
+        const charactersResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`);
+        const reviewsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}&language=en-US`);
+        const trailerResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`);
 
-        setMovie(response.data);
-      } catch (error) {
-        console.error("Error fetching movie detail: ", error);
-      }
-    }
+        setMovie(movieResponse.data);
+        setCharacters(charactersResponse.data.cast);
+        setReviews(reviewsResponse.data.results);
 
-    async function fetchCharacters() {
-      try {
-        const apiKey = "affdd15286d19dac04688aa26ecee7ac";
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`);
-
-        setCharacters(response.data.cast);
-      } catch (error) {
-        console.error("Error fetching characters: ", error);
-      }
-    }
-
-    async function fetchReviews() {
-      try {
-        const apiKey = "affdd15286d19dac04688aa26ecee7ac";
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}&language=en-US`);
-
-        setReviews(response.data.results);
-      } catch (error) {
-        console.error("Error fetching reviews: ", error);
-      }
-    }
-
-    async function fetchTrailer() {
-      try {
-        const apiKey = "affdd15286d19dac04688aa26ecee7ac";
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`);
-
-        const trailer = response.data.results.find((video) => video.type === "Trailer");
+        const trailer = trailerResponse.data.results.find((video) => video.type === "Trailer");
         if (trailer) {
           setTrailerKey(trailer.key);
         }
       } catch (error) {
-        console.error("Error fetching trailer: ", error);
+        console.error("Error fetching data: ", error);
       }
+
+      const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+      const isAdded = watchlist.some((item) => item.id === id);
+      setIsAddedToWatchlist(isAdded);
     }
 
-    fetchMovieDetail();
-    fetchCharacters();
-    fetchReviews();
-    fetchTrailer();
-
-    const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-    const isAdded = watchlist.some((item) => item.id === id);
-    setIsAddedToWatchlist(isAdded);
+    fetchData();
   }, [id]);
 
   const handleTabClick = (tab) => {
@@ -94,50 +65,36 @@ const DetailMovie = () => {
   };
 
   const handleAddToWatchlist = () => {
-    if (isAddedToWatchlist) {
-      Swal.fire({
-        title: "Remove from Watchlist",
-        text: "Are you sure you want to remove this movie from your Watchlist?",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonText: "Remove",
-        cancelButtonText: "Cancel",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          toggleWatchlist();
-          Swal.fire("Removed from Watchlist", "", "success");
-        }
-      });
-    } else {
-      Swal.fire({
-        title: "Add to Watchlist",
-        text: "Are you sure you want to add this movie to your Watchlist?",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonText: "Add",
-        cancelButtonText: "Cancel",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          toggleWatchlist();
-          Swal.fire("Added to Watchlist", "", "success");
-        }
-      });
-    }
+    const watchlistText = isAddedToWatchlist ? "Remove from Watchlist" : "Add to Watchlist";
+    const confirmText = isAddedToWatchlist ? "Are you sure you want to remove this movie from your Watchlist?" : "Are you sure you want to add this movie to your Watchlist?";
+
+    Swal.fire({
+      title: watchlistText,
+      text: confirmText,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: watchlistText,
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        toggleWatchlist();
+        Swal.fire(isAddedToWatchlist ? "Removed from Watchlist" : "Added to Watchlist", "", "success");
+      }
+    });
   };
 
   const toggleWatchlist = () => {
-    console.log("Toggle Watchlist function called");
+    const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+
     if (isAddedToWatchlist) {
-      const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
       const updatedWatchlist = watchlist.filter((item) => item.id !== movie.id);
       localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
-      setIsAddedToWatchlist(false);
     } else {
-      const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
       watchlist.push(movie);
       localStorage.setItem("watchlist", JSON.stringify(watchlist));
-      setIsAddedToWatchlist(true);
     }
+
+    setIsAddedToWatchlist(!isAddedToWatchlist);
   };
 
   if (!movie) {
@@ -154,31 +111,33 @@ const DetailMovie = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="container mx-auto flex items-center">
-          <div className="ml-8">
-            <h1 className="text-4xl font-black">{movie.title}</h1>
-            <div className="flex items-center mt-4">
-              <div className="mr-4">
-                <RatingStar rating={movie.vote_average} />
+        <Container>
+          <div className="flex items-center">
+            <div className="ml-8">
+              <h1 className="text-4xl font-black">{movie.title}</h1>
+              <div className="flex items-center mt-4">
+                <div className="mr-4">
+                  <RatingStar rating={movie.vote_average} />
+                </div>
+                <div>
+                  <span className="text-xl">{reviews.length} Review</span>
+                </div>
               </div>
-              <div>
-                <span className="text-xl">
-                  {movie.overview.count}
-                  Review
-                </span>
+              <p className="mt-4 text-xl">{movie.overview || <span style={{ color: "red" }}>Data not available</span>}</p>
+              <div className="mt-8">
+                <button className="bg-primary hover:bg-secondary transition duration-300 ease-in-out rounded-md text-white px-4 py-2 mr-4" onClick={openTrailer}>
+                  Watch Trailer
+                </button>
+                <button
+                  className={`${isAddedToWatchlist ? "bg-green-500 text-white" : "bg-gray-300 hover:bg-gray-400 text-gray-900"} hover:bg-gray-400 transition duration-300 ease-in-out rounded-md px-4 py-2`}
+                  onClick={handleAddToWatchlist}
+                >
+                  {isAddedToWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+                </button>
               </div>
-            </div>
-            <p className="mt-4 text-xl">{movie.overview}</p>
-            <div className="mt-8">
-              <button className="bg-primary hover:bg-secondary transition duration-300 ease-in-out rounded-md text-white px-4 py-2 mr-4" onClick={openTrailer}>
-                Watch Trailer
-              </button>
-              <button className={`${isAddedToWatchlist ? "bg-green-500 text-white" : "bg-gray-300 hover:bg-gray-400 text-gray-900"} hover:bg-gray-400 transition duration-300 ease-in-out rounded-md px-4 py-2`} onClick={handleAddToWatchlist}>
-                {isAddedToWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
-              </button>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
 
       <div className="mb-4 mt-12">
@@ -187,7 +146,7 @@ const DetailMovie = () => {
             <button
               onClick={() => handleTabClick("overview")}
               className={`${
-                activeTab === "overview" ? "bg-secondary text-white hover:bg-primary transition duration-300 ease-in-out" : "bg-gray-300 text-gray-600 hover:bg-gray-400 transition duration-300 ease-in-out"
+                activeTab === "overview" ? "bg-secondary text-white hover:bg-primary transition duration-300 ease-in-out" : "bg-gray-300 text-gray-600 hover-bg-gray-400 transition duration-300 ease-in-out"
               } py-2 px-4 rounded cursor-pointer`}
             >
               Overview
@@ -203,7 +162,7 @@ const DetailMovie = () => {
             <button
               onClick={() => handleTabClick("review")}
               className={`${
-                activeTab === "review" ? "bg-secondary text-white hover:bg-primary transition duration-300 ease-in-out" : "bg-gray-300 text-gray-600 hover:bg-gray-400 transition duration-300 ease-in-out"
+                activeTab === "review" ? "bg-secondary text-white hover:bg-primary transition duration-300 ease-in-out" : "bg-gray-300 text-gray-600 hover-bg-gray-400 transition duration-300 ease-in-out"
               } py-2 px-4 rounded cursor-pointer`}
             >
               Review
@@ -227,9 +186,7 @@ const DetailMovie = () => {
             <strong>Featured song:</strong> {movie.featured_song || <span style={{ color: "red" }}>Data not available</span>}
           </p>
           <p>
-            <p>
-              <strong>Budget:</strong> {movie.budget ? formatBudget(movie.budget) : <span style={{ color: "red" }}>Data not available</span>}
-            </p>
+            <strong>Budget:</strong> {movie.budget ? formatBudget(movie.budget) : <span style={{ color: "red" }}>Data not available</span>}
           </p>
         </Container>
       )}
@@ -237,19 +194,17 @@ const DetailMovie = () => {
         <Container>
           <h2 className="text-2xl font-bold mb-2 mt-10">Character</h2>
           <ul>
-            {characters.length > 0 && (
-              <div>
-                <ul>
-                  {characters.map((character) => (
-                    <li key={character.id} className="mb-2">
-                      <strong>{character.name}</strong> - {character.character}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {characters.length > 0 ? (
+              <ul>
+                {characters.map((character) => (
+                  <li key={character.id} className="mb-2">
+                    <strong>{character.name}</strong> - {character.character}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No characters available.</p>
             )}
-
-            {characters.length === 0 && <p>No characters available.</p>}
           </ul>
         </Container>
       )}
@@ -257,7 +212,7 @@ const DetailMovie = () => {
         <Container>
           <h2 className="text-2xl font-bold mb-2 mt-10">Reviews</h2>
           <ul>
-            {reviews.length > 0 && (
+            {reviews.length > 0 ? (
               <div>
                 <h2 className="text-xl font-semibold">Review</h2>
                 <ul>
@@ -268,9 +223,9 @@ const DetailMovie = () => {
                   ))}
                 </ul>
               </div>
+            ) : (
+              <p>No reviews available.</p>
             )}
-
-            {reviews.length === 0 && <p>No reviews available.</p>}
           </ul>
         </Container>
       )}

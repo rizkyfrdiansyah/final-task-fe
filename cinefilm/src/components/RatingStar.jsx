@@ -2,7 +2,7 @@ import React from "react";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const RatingStar = () => {
+const RatingStar = ({ rating }) => {
   const fullStars = Math.floor(rating / 2);
   const hasHalfStar = rating % 2 !== 0;
 

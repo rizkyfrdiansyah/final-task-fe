@@ -2,7 +2,7 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const Pagination = () => {
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pageNumbers = [];
   const maxPageButtons = 5;
   const halfMaxButtons = Math.floor(maxPageButtons / 2);
@@ -25,7 +25,7 @@ const Pagination = () => {
           {page}
         </button>
       ))}
-      <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages} className="ml-4 px-3 py-2 bg-gray-200 text-gray-500 rounded-r hover:bg-gray-300">
+      <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages} className="ml-4 px-3 py-2 bg-gray-200 text-gray-500 rounded-r hover-bg-gray-300">
         <FontAwesomeIcon icon={faChevronRight} />
       </button>
     </div>

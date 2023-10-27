@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../assets/img/logo.png";
 import Container from "./Container";
 
-const Navbar = () => {
+const Navbar = ({ onSearchQueryChange }) => {
   return (
     <nav className="bg-white p-4 fixed top-0 w-full shadow-md z-50">
       <Container>
         {/* Layout Desktop */}
         <div className="hidden md:flex items-center justify-between">
-          <img src={Logo} alt="Logo" className="h-8 w-13" />{" "}
+          <img src={Logo} alt="Logo" className="h-8 w-13" />
           <div className="w-1/2 md:w-1/3 lg:w-1/4 mx-auto relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-4">
               <FontAwesomeIcon icon={faSearch} />

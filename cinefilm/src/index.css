@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-left {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 16px; /* Lebih besar */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  transition: background-color 0.3s; /* Efek transisi warna latar belakang */
+}
+
+.scroll-to-top-button:hover {
+  background-color: #0056b3; /* Warna latar belakang saat dihover */
+}

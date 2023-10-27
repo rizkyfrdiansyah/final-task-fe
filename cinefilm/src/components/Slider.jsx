@@ -33,10 +33,7 @@ const Slider = () => {
   }, [isDetailPage]);
 
   return (
-    <div className="slider mx-auto max-w-screen-xl">
-      <br />
-      <br />
-      <br />
+    <div className="slider w-full mt-16">
       <div>
         <Carousel showArrows={false} showStatus={false} showThumbs={false} infiniteLoop={true} autoPlay={true} interval={3000}>
           {sliderImages.map((movie, index) => (
@@ -45,9 +42,9 @@ const Slider = () => {
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt={`Movie ${index + 1}`}
                 style={{
-                  maxHeight: "52vh",
+                  maxHeight: "60vh",
                   maxWidth: "100%",
-                  objectFit: "cover",
+                  objectFit: "fill",
                 }}
               />
             </div>

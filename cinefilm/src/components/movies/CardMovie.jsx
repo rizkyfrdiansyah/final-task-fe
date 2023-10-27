@@ -7,7 +7,7 @@ const CardMovie = ({ title, image, genres, id }) => {
   return (
     <div className="container">
       <div className="bg-white shadow-md rounded-lg overflow-hidden h-full">
-        <img src={`https://image.tmdb.org/t/p/w300${image}`} alt={title} className="w-full h-48 object-cover" />
+        <img src={`https://image.tmdb.org/t/p/original${image}`} alt={title} className="w-full h-48 object-cover" />
         <div className="p-4 h-40 flex flex-col justify-between">
           <div>
             <h2 className="text-lg font-semibold">{title}</h2>

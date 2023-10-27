@@ -108,6 +108,7 @@ const DetailMovie = () => {
         className="bg-black text-white py-16 px-4"
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+          backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
@@ -129,7 +130,7 @@ const DetailMovie = () => {
                   Watch Trailer
                 </button>
                 <button
-                  className={`${isAddedToWatchlist ? "bg-green-500 text-white" : "bg-gray-300 hover:bg-gray-400 text-gray-900"} hover:bg-gray-400 transition duration-300 ease-in-out rounded-md px-4 py-2`}
+                  className={`${isAddedToWatchlist ? "bg-green-500 text-white" : "bg-transparent border border-white hover:bg-white text-gray-900"} hover:bg-gray-50 transition duration-300 ease-in-out rounded-md px-4 py-2`}
                   onClick={handleAddToWatchlist}
                 >
                   {isAddedToWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}

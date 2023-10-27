@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Slider from "./components/Slider";
@@ -6,9 +6,34 @@ import ListMovie from "./components/movies/ListMovie";
 import DetailMovie from "./components/movies/DetailMovie";
 import Footer from "./components/Footer";
 import Notfound from "./components/Notfound";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUp } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setShowScrollButton(true);
+    } else {
+      setShowScrollButton(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Router>
@@ -22,6 +47,12 @@ function App() {
         </Routes>
         <Footer />
       </div>
+
+      {showScrollButton && (
+        <button onClick={scrollToTop} className="scroll-to-top-button">
+          <FontAwesomeIcon icon={faCircleUp} size="xl" />
+        </button>
+      )}
     </Router>
   );
 }

@@ -15,6 +15,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     startPage = Math.max(1, endPage - maxPageButtons + 1);
   }
 
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <div className="flex items-center justify-center mt-10">
       <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1} className="mr-2 px-3 py-2 bg-gray-200 text-gray-500 rounded-l hover:bg-gray-300">

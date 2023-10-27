@@ -89,7 +89,7 @@ const ListMovie = ({ searchQuery }) => {
 
   return (
     <Container>
-      <h1 className="text-2xl font-semibold mb-4 lg:-mt-80 -mt-12">Browse by category</h1>
+      <h1 className="text-3xl font-bold mb-4 lg:-mt-80 -mt-12 text-gray-400">Telusuri berdasarkan kategori</h1>
       <div className="mb-4">
         <div className="flex flex-wrap gap-2">
           <button
@@ -109,9 +109,9 @@ const ListMovie = ({ searchQuery }) => {
           ))}
         </div>
       </div>
-      <input type="text" placeholder="Search..." className="py-2 px-3 rounded mb-4" value={searchQuery} onChange={(e) => filterMovies(e.target.value)} />
+
       {currentMovies.length === 0 ? (
-        <div className="text-lg text-gray-600">No movies found with the current search criteria.</div>
+        <div className="text-lg text-gray-600">Maaf, film yang anda cari lagi kosong.</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {currentMovies.map((movie) => (

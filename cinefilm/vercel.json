@@ -1,0 +1,8 @@
+{
+  "build": {
+    "commands": ["npm install", "npm run build"],
+    "env": {
+      "YOUR_ENV_VARIABLE": "your-value"
+    }
+  }
+}

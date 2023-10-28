@@ -1,3 +1,24 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/movie/:id",
+      "dest": "/DetailMovie"
+    },
+    {
+      "src": "/not-found",
+      "dest": "/Notfound"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": ".*",
+      "status": 404,
+      "dest": "/not-found"
+    }
+  ]
 }

@@ -102,7 +102,7 @@ const DetailMovie = () => {
   }
 
   return (
-    <div className="mt-16 mb-10">
+    <div className="mt-12 mb-10">
       {/* Banner */}
       <div
         className="bg-black text-white py-16 px-4"

@@ -20,7 +20,7 @@ const Navbar = ({ onSearchQueryChange }) => {
             <input
               type="text"
               className="py-2 pl-12 pr-4 rounded-md focus:outline-none focus:ring focus:border-gray-300 w-full bg-white border border-gray-200"
-              placeholder="Mau cari film apa..."
+              placeholder="Mau film apa..."
               onChange={(e) => onSearchQueryChange(e.target.value)}
             />
           </div>

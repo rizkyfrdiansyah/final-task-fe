@@ -130,7 +130,7 @@ const DetailMovie = () => {
                   Watch Trailer
                 </button>
                 <button
-                  className={`${isAddedToWatchlist ? "bg-green-500 text-white" : "bg-transparent border border-white hover:bg-white text-gray-900"} hover:bg-gray-50 transition duration-300 ease-in-out rounded-md px-4 py-2`}
+                  className={`${isAddedToWatchlist ? "bg-green-500 hover:bg-green-400 text-white" : "bg-transparent border border-white text-white"} hover:bg-gray-400 transition duration-300 ease-in-out rounded-md px-4 py-2`}
                   onClick={handleAddToWatchlist}
                 >
                   {isAddedToWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
@@ -230,7 +230,7 @@ const DetailMovie = () => {
           </ul>
         </Container>
       )}
-      {/* Trailer Pop-up */}
+      {/* Pop-up Trailer */}
       {isTrailerOpen && trailerKey && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center">
           <div className="bg-white p-4 rounded-md w-full max-w-md flex flex-col items-center justify-center mt-10">

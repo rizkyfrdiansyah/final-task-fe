@@ -70,7 +70,7 @@ const Footer = () => {
           <p className="lg:hidden text-center text-gray-200 mb-4">
             CineFilm, juga dikenal sebagai film sinematik, adalah medium yang digunakan untuk merekam gambar bergerak dan suara dalam produksi film. Cinefilm adalah format tradisional untuk produksi film sebelum era digital.
           </p>
-          <div className="lg:hidden items-center mt-6">
+          <div className="lg:hidden items-center mt-6 text-center">
             <a href="https://www.themoviedb.org/about?language=id-ID" className="mb-2 text-white hover:text-gray-300 mr-3">
               Tentang Kami
             </a>
@@ -91,23 +91,23 @@ const Footer = () => {
           <div className="lg:hidden items-center mt-6">
             <h1 className="text-lg font-bold text-white mb-2 ml-6">Download</h1>
             <a href="https://play.google.com/store/apps/details?id=com.anch.tmdb_anch_movies_database&hl=en_US">
-              <img src={GooglePlay} alt="googleplay" className="w-36" />
+              <img src={GooglePlay} alt="googleplay" className="w-36 md:w-44 pr-2" />
             </a>
             <a href="https://apps.apple.com/us/app/imdb-movies-tv-shows/id342792525">
-              <img src={AppStore} alt="appstore" className="w-36" />
+              <img src={AppStore} alt="appstore" className="w-36 md:w-44 pr-2" />
             </a>
           </div>
 
           <div className="lg:hidden items-center mt-6">
             <h1 className="text-lg font-bold text-white mb-2">Social Media</h1>
             <a href="https://www.facebook.com/themoviedb/?locale=id_ID" className="mr-2">
-              <FontAwesomeIcon icon={faFacebook} size="2x" className="text-white" style={{ color: "#3b5998" }} />
+              <FontAwesomeIcon icon={faFacebook} size="2xl" className="text-white md:text-2xl" style={{ color: "#3b5998" }} />
             </a>
             <a href="https://id.pinterest.com/pin/391602130096238493/" className="mr-2">
-              <FontAwesomeIcon icon={faPinterest} size="2x" className="text-white" style={{ color: "#fa0505" }} />
+              <FontAwesomeIcon icon={faPinterest} size="2xl" className="text-white md:text-2xl" style={{ color: "#fa0505" }} />
             </a>
             <a href="https://www.instagram.com/tmdbmovies/?hl=id">
-              <FontAwesomeIcon icon={faInstagram} size="2x" className="text-white" style={{ color: "#f56040" }} />
+              <FontAwesomeIcon icon={faInstagram} size="2xl" className="text-white md:text-2xl" style={{ color: "#f56040" }} />
             </a>
           </div>
         </div>

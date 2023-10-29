@@ -39,3 +39,9 @@ Aplikasi ini merupakan sebuah situs web yang memungkinkan pengguna untuk menelus
 - Menampilkan informasi rinci mengenai film, seperti plot, tanggal rilis, sutradara, soundtrack terkenal, anggaran, dan sebagainya.
 - Akses informasi karakter yang muncul dalam film.
 - Muncul trailer dari film.
+
+## Mockup Figma (https://www.figma.com/file/HWAJ1Me85SrsgZw3ogZijU/movieapp_practice?type=design&node-id=0%3A1&mode=design&t=EtCIONSE4snHCoiA-1)
+
+![image](./img//HomePage.png)
+
+![image](./img//DetailPage.png)

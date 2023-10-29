@@ -45,3 +45,25 @@ Aplikasi ini merupakan sebuah situs web yang memungkinkan pengguna untuk menelus
 ![image](./img//HomePage.png)
 
 ![image](./img//DetailPage.png)
+
+## Layout Website
+
+![image](./img/homeWeb.png)
+
+![image](./img/homeWeb2.png)
+
+![image](./img/footerWeb.png)
+
+![image](./img/detailWeb.png)
+
+## Layout Mobile
+
+![image](./img/mobileHome.png)
+
+![image](./img/mobileHome2.png)
+
+![image](./img/mobileFooter.png)
+
+![image](./img/mobileDetail.png)
+
+![image](./img/mobileDetail2.png)

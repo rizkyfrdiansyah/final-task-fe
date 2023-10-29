@@ -8,7 +8,7 @@ const Navbar = ({ onSearchQueryChange }) => {
   return (
     <nav className="bg-white p-4 fixed top-0 w-full shadow-md z-50">
       <Container>
-        {/* Layout Desktop */}
+        {/* Layout Website */}
         <div className="hidden md:flex items-center justify-between">
           <a href="/" className="cursor-pointer">
             <img src={Logo} alt="Logo" className="h-8 w-13" />

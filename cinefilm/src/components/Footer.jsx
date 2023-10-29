@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Layout Desktop */}
+          {/* Layout Website */}
           <div className="hidden lg:-mt-24 lg:flex flex-col lg:ml-6">
             <a href="https://www.themoviedb.org/about?language=id-ID" className="mb-2 text-white hover:text-gray-300">
               Tentang Kami

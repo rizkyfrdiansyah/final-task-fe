@@ -49,11 +49,8 @@ Aplikasi ini merupakan sebuah situs web yang memungkinkan pengguna untuk menelus
 ## Layout Website
 
 ![image](./img/homeWeb.png)
-
 ![image](./img/homeWeb2.png)
-
 ![image](./img/footerWeb.png)
-
 ![image](./img/detailWeb.png)
 
 ## Layout Mobile
